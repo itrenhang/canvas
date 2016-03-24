@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>move-rect</title>
+	<style>
+	body{ background:#000;}
+	#c1{ background: #fff; width:400px; height:400px;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gd=oC.getContext('2d');
+
+		gd.fillRect(10,10,100,100);
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1"></canvas>
+</body>
+</html>

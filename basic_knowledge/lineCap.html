@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lineCap</title>
+	<style>
+	body{ background:#000;}
+	#c1{ background: #fff;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gd=oC.getContext('2d');
+
+		gd.lineWidth=20;
+		gd.lineCap='round';
+		gd.moveTo(100,100);
+		gd.lineTo(300,300);
+		gd.stroke();
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

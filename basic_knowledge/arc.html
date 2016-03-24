@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arc</title>
+	<style>
+	body{ background:#000;}
+	#c1{ background: #fff;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gd=oC.getContext('2d');
+
+		gd.fillStyle='yellow';
+		gd.arc(100,100,50,0,Math.PI*2,true);
+		gd.stroke();
+		gd.fill();
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width="500" height="500"></canvas>
+</body>
+</html>
