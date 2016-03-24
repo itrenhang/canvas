@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+body{background:#000;text-align:center;}
+canvas{background:#fff; }
+</style>
+<script>
+function rnd(n,m){
+	return Math.floor(n+Math.random()*(m-n));	
+}
+document.addEventListener('DOMContentLoaded',function(){
+	var oC=document.querySelector('#c');
+	var gd=oC.getContext('2d');
+	var arr=[40,10,25,50,80,60];
+	var iMax=Math.max.apply(null,arr);
+	var iH=[];
+	for(var i=0;i<arr.length;i++){
+		iH.push(arr[i]/iMax*oC.height);	
+	}
+	var w=oC.width/(arr.length*3);
+	var space=2*w;
+	for(var i=0;i<arr.length;i++){
+		gd.beginPath();	
+		gd.fillStyle='rgb('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+')'
+		gd.fillRect(i*w+i*space,oC.height-iH[i],w,iH[i]);
+	}
+	
+	
+	
+},false);
+</script>
+</head>
+
+<body>
+<canvas id="c" width="800" height="600"></canvas>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{background:#000;}
+canvas{background:#fff;}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var oC=document.querySelector('canvas');
+	var gd=oC.getContext('2d');
+	gd.moveTo(85,36);
+	gd.lineTo(146,4);
+	gd.lineTo(146,20);
+	gd.lineTo(210,20);
+	gd.lineTo(210,50);
+	gd.lineTo(146,50);
+	gd.lineTo(146,66);
+	gd.closePath();
+	gd.stroke();
+},false);
+</script>
+</head>
+
+<body>
+	<canvas width="800" height="600"></canvas>
+</body>
+</html>

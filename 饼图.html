@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+body{background:#000; text-align:center;}
+canvas{background:#fff;}
+</style>
+<script>
+function rnd(n,m){
+	return Math.floor(n+Math.random()*(m-n));	
+}
+function b2a(n){
+	return n*Math.PI/180;
+}
+document.addEventListener('DOMContentLoaded',function(){
+	var oC=document.getElementById('c1');
+	var arr=[12,52,30,42,60];
+	var cx=oC.width/2;
+	var cy=oC.height/2;
+	var gd=oC.getContext('2d');
+	function draw(cx,cy,r,s,e,color){
+		color=color||'black';
+		r = r||100;
+		gd.beginPath();
+		gd.moveTo(cx,cy);
+		gd.arc(cx,cy,r,b2a(s-90),b2a(e-90),false);
+		gd.closePath();
+		gd.strokeStyle=color;
+		gd.stroke();
+	}
+	
+	//draw(cx,cy,100,0,90,'blue');
+	var sum=0;
+	for(var i=0;i<arr.length;i++){
+			sum+=arr[i];
+	}
+	var d=0;
+	for(var i=0;i<arr.length;i++){
+		draw(cx,cy,100,d,d+arr[i]/sum*360,'blue');
+		d+=arr[i]/sum*360;
+	}	
+	
+},false);
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

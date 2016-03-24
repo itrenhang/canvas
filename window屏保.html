@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+body{overflow:hidden;}
+canvas{background:#000;}
+</style>
+<script>
+function rnd(n,m){
+	return Math.floor(n+Math.random()*(m-n));
+}
+document.addEventListener('DOMContentLoaded',function(){
+	var oC=document.getElementById('c1');
+	oC.width=document.documentElement.clientWidth;
+	oC.height=document.documentElement.clientHeight;
+	var N=5;
+	var gd=oC.getContext('2d');
+	var result=[];
+	for(var i=0;i<N;i++){
+		result.push({
+			x:rnd(0,oC.width),
+			y:rnd(0,oC.height),
+			iSpeedX:rnd(-10,10),
+			iSpeedY:rnd(-10,10),
+		})
+	}
+	var n=0;
+	setInterval(function(){
+		n++
+		if(n==10){
+			gd.clearRect(0,0,oC.width,oC.height);
+			n=0;
+		}
+		//画点
+		for(var i=0;i<N;i++){
+			draw(result[i]);
+		}
+		//限制范围
+		for(var i=0;i<N;i++){
+			if(result[i].x<0){
+				result[i].x=0;
+				result[i].iSpeedX*=-1;
+			}
+			if(result[i].y<0){
+				result[i].y=0;
+				result[i].iSpeedY*=-1;
+			}
+			if(result[i].x>oC.width){
+				result[i].x=oC.width;
+				result[i].iSpeedX*=-1;
+			}
+			if(result[i].y>oC.height){
+				result[i].y=oC.height;
+				result[i].iSpeedY*=-1;
+			}
+			result[i].x+=result[i].iSpeedX;	
+			result[i].y+=result[i].iSpeedY;	
+		}
+		//连线
+		gd.beginPath();
+		gd.moveTo(result[0].x,result[0].y);
+		for(var i=1;i<N;i++){
+			gd.lineTo(result[i].x,result[i].y);	
+		}
+		gd.closePath();
+		gd.strokeStyle='#fff';
+		gd.stroke();
+	},16);
+	
+	function draw(obj){
+		gd.beginPath();
+		gd.fillStyle='#fff';
+		gd.fillRect(obj.x,obj.y,0,0);
+	}
+},false);
+</script>
+</head>
+
+<body>
+<canvas id="c1"></canvas>
+</body>
+</html>

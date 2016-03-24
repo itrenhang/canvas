@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+body{background:#000; text-align:center;}
+canvas{background:#fff;}
+</style>
+<script>
+function b2a(n){
+	return n*Math.PI/180;
+}
+document.addEventListener('DOMContentLoaded',function(){
+	var oC=document.getElementById('c1');
+	var gd=oC.getContext('2d');
+	gd.beginPath();
+	gd.arc(200,200,100,b2a(0),b2a(45),false);
+	gd.strokeStyle='red';
+	gd.stroke();
+},false);
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

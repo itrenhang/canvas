@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+body{background:#000; text-align:center;}
+canvas{background:#fff;}
+</style>
+<script>
+function d2a(n){
+	return n*Math.PI/180;
+}
+document.addEventListener('DOMContentLoaded',function(){
+	var oC=document.querySelector('#c1');
+	var cx=oC.width/2;
+	var cy=oC.height/2;
+	var gd=oC.getContext('2d');
+	function draw(cx,cy,r,s,e,color){
+		r=r||100;
+		color=color||'black';
+		gd.beginPath();
+		gd.arc(cx,cy,r,d2a(s-90),d2a(e-90),false);
+		gd.lineWidth=20;
+		gd.strokeStyle=color;
+		gd.stroke();
+	}	
+	function time(){
+		gd.clearRect(0,0,oC.width,oC.height);
+
+		var oDate=new Date();
+		var h=oDate.getHours();
+		var m=oDate.getMinutes();
+		var s=oDate.getSeconds();
+		draw(cx,cy,60,0,h%12*30,'red');
+		draw(cx,cy,80,0,m*6,'yellow');
+		draw(cx,cy,100,0,s*6,'blue');
+	}
+	time();
+	setInterval(time,1000);
+	
+},false);
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>
